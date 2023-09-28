@@ -25,7 +25,9 @@ class Migration(migrations.Migration):
                 ("date", models.DateField()),
                 (
                     "spend",
-                    models.DecimalField(decimal_places=2, default=0, max_digits=10),
+                    models.DecimalField(
+                        decimal_places=2, default=0, max_digits=10
+                    ),
                 ),
                 ("impressions", models.IntegerField(default=0)),
                 ("clicks", models.IntegerField(default=0)),
