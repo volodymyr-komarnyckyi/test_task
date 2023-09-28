@@ -50,16 +50,8 @@ class RevenueStatisticsView(APIView):
 
         truncated_data = []
         for item in queryset:
-            item_dict = {
-                "name": item.name,
-                "date": item.date.strftime("%Y-%m-%d"),
-                "total_revenue": item.total_revenue,
-                "total_spend": item.total_spend,
-                "total_impressions": item.total_impressions,
-                "total_clicks": item.total_clicks,
-                "total_conversions": item.total_conversions,
-            }
-            truncated_data.append(item_dict)
+            item["date"] = item["date"].strftime("%Y-%m-%d")
+            truncated_data.append(item)
 
         serializer = RevenueRetrieveSerializer(truncated_data, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
